@@ -12,3 +12,9 @@ The following is a quick overview of the game:
 *Nothing will appear in the square. In this case, the square will clear and become blank. Adjacent squares will then be   recursively revealed.
 
 **This project will be made mainly with javascript**
+
+
+*Note that to test your code you need to:<br /> 
+1.have node installed<br /> 
+2.you need to be in your src directory<br /> 
+3.you need to run: **node minesweeper.js**  
