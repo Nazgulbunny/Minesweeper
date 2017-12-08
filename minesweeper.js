@@ -1,4 +1,7 @@
+const board = [
+[" ", " ", " "],
+[" ", " ", " "],
+[" ", " ", " "]
+];
 
-
-let board =[[],[],[]];
-
+console.log(board);
