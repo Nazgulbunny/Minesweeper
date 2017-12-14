@@ -1,4 +1,4 @@
-const testBoard = [
+/*const testBoard = [
 	[" ", " ", " "],
 	[" ", " ", " "],
 	[" ", " ", " "]
@@ -16,4 +16,10 @@ printBoard(testBoard);
 testBoard[0][1] = "1";
 testBoard[1][0] = "B";
 
-printBoard(testBoard);
+printBoard(testBoard);*/
+
+const generatePlayerBoard = (numberOfRows,numberOfColumns) => {
+
+
+	
+}
