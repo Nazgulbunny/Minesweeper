@@ -26,14 +26,55 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
 
   while (numberOfBombsPlaced < numberOfBombs) {
     // This code has the potential to place bombs on top of bombs, this will be fixed with control flow.
-    const randomRowIndex = Math.floor(Math.random() * numberOfRows);
-    const randomColumnIndex = Math.floor(Math.random() * numberOfColumns);
+    let randomRowIndex = Math.floor(Math.random() * numberOfRows);
+    let randomColumnIndex = Math.floor(Math.random() * numberOfColumns);
+    if(randomRowIndex!=="B" && randomColumnIndex!=="B"){
+	board[randomRowIndex][randomColumnIndex] = 'B';
+    numberOfBombsPlaced++;
+    }
+
     board[randomRowIndex][randomColumnIndex] = 'B';
     numberOfBombsPlaced++;
   }
 
   return board;
 };
+
+const getNumberOfNeighborBombs=(bombBoard, rowIndex, columnIndex)=>{
+	const neighborOffsets = [
+    [-1,-1],
+    [-1,0],
+    [-1,1],
+    [0,-1],
+    [1,1],
+    [0,1],
+    [1,-1],
+    [1,0]
+	];
+	const numberOfRows = bombBoard.length;
+	const numberOfColumns = bombBoard[0].length;
+	const numberOfBombs = 0;
+	neighborOffsets.forEach(offset=>{
+		const neighborRowIndex = rowIndex + offset[0];
+		const neighborColumnIndex = columnIndex + offset[1];
+		if(neighborRowIndex >=0 && neighborRowIndex < numberOfRows && neighborColumnIndex >=0 && neighborColumnIndex < numberOfColumns){
+			if(bombBoard[neighborRowIndex][neighborColumnIndex] == "B"]){
+				numberOfBombs++;
+
+			}
+
+
+		}
+
+
+	});
+
+	return numberOfBombs;
+
+
+
+
+}
 
 const printBoard = board => {
   console.log(board.map(row => row.join(' | ')).join('\n'));
