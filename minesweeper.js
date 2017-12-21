@@ -8,7 +8,10 @@ class Board {
          this._bombBoard = Board.generatePlayerBoard(numberOfRows and numberOfColumns);
 	 }
 
+     get playerBoard(){
 
+     	return this._playerBoard;
+     }
 
 
 
