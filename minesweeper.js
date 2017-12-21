@@ -62,12 +62,54 @@ class Board {
 
     hasSafeTiles(numberOfTiles,numberOfBombs){
     return this._numberOfTiles!==this._numberOfBombs; 
-        
+        }
+    
+    print(board) {
+    console.log(this._board.map(row => row.join(' | ')).join('\n'));
+	}
+    static generatePlayerBoard:function(numberOfRows, numberOfColumns){
+	    const board = [];
+
+	    for (var rowIndex = 0; rowIndex < numberOfRows; rowIndex++) {
+	        const row = [];
+	        for (var columnIndex = 0; columnIndex < numberOfColumns; columnIndex++) {
+	            row.push(' ');
+	        }
+	        board.push(row);
+	    }
+	    return board;
+	};
+	
+	 static generateBombBoard:function(numberOfRows, numberOfColumns, numberOfBombs){
+	    const board = [];
+
+	    for (var rowIndex = 0; rowIndex < numberOfRows; rowIndex++) {
+	        const row = [];
+	        for (var columnIndex = 0; columnIndex < numberOfColumns; columnIndex++) {
+	            row.push(null);
+	        }
+	        board.push(row);
+	    }
+
+	    var numberOfBombsPlaced = 0;
+
+	    while (numberOfBombsPlaced < numberOfBombs) {
+	        // This code has the potential to place bombs on top of bombs, this will be fixed with control flow.
+	        let randomRowIndex = Math.floor(Math.random() * numberOfRows);
+	        let randomColumnIndex = Math.floor(Math.random() * numberOfColumns);
+	        if (randomRowIndex !== "B" && randomColumnIndex !== "B") {
+	            board[randomRowIndex][randomColumnIndex] = 'B';
+	            numberOfBombsPlaced++;
+	        }
+
+	        board[randomRowIndex][randomColumnIndex] = 'B';
+	        numberOfBombsPlaced++;
+	    }
+
+	    return board;
+	};
 
 
-    	
-
-    }
 
 
 }
@@ -99,47 +141,6 @@ class Board {
 
 
 
-const generatePlayerBoard = (numberOfRows, numberOfColumns) => {
-    const board = [];
-
-    for (var rowIndex = 0; rowIndex < numberOfRows; rowIndex++) {
-        const row = [];
-        for (var columnIndex = 0; columnIndex < numberOfColumns; columnIndex++) {
-            row.push(' ');
-        }
-        board.push(row);
-    }
-    return board;
-};
-
-const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
-    const board = [];
-
-    for (var rowIndex = 0; rowIndex < numberOfRows; rowIndex++) {
-        const row = [];
-        for (var columnIndex = 0; columnIndex < numberOfColumns; columnIndex++) {
-            row.push(null);
-        }
-        board.push(row);
-    }
-
-    var numberOfBombsPlaced = 0;
-
-    while (numberOfBombsPlaced < numberOfBombs) {
-        // This code has the potential to place bombs on top of bombs, this will be fixed with control flow.
-        let randomRowIndex = Math.floor(Math.random() * numberOfRows);
-        let randomColumnIndex = Math.floor(Math.random() * numberOfColumns);
-        if (randomRowIndex !== "B" && randomColumnIndex !== "B") {
-            board[randomRowIndex][randomColumnIndex] = 'B';
-            numberOfBombsPlaced++;
-        }
-
-        board[randomRowIndex][randomColumnIndex] = 'B';
-        numberOfBombsPlaced++;
-    }
-
-    return board;
-};
 
 
 
@@ -148,9 +149,10 @@ const generateBombBoard = (numberOfRows, numberOfColumns, numberOfBombs) => {
 
 
 
-const printBoard = board => {
-    console.log(board.map(row => row.join(' | ')).join('\n'));
-};
+
+
+
+
 
 var playerBoard = generatePlayerBoard(3, 3);
 var bombBoard = generateBombBoard(3, 3, 3);
