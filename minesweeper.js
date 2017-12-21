@@ -60,6 +60,16 @@ class Board {
 	    return this._numberOfBombs;
 	}
 
+    hasSafeTiles(numberOfTiles,numberOfBombs){
+    return this._numberOfTiles!==this._numberOfBombs; 
+        
+
+
+    	
+
+    }
+
+
 }
 
 
